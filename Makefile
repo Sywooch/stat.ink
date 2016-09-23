@@ -200,7 +200,7 @@ resources/.compiled/stat.ink/downloads.css: resources/stat.ink/downloads.less $(
 	$(GULP) less --in $< --out $@
 
 resources/.compiled/stat.ink/weapons-use.js: resources/stat.ink/weapons-use.js $(GULP)
-	$(GULP) js --in $< --out $@
+	$(GULP) es --in $< --out $@
 
 resources/.compiled/gh-fork-ribbon/gh-fork-ribbon.js: resources/gh-fork-ribbon/gh-fork-ribbon.js $(GULP)
 	$(GULP) js --in $< --out $@

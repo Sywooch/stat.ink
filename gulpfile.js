@@ -66,3 +66,26 @@ gulp.task('js', function () {
     .pipe($.rename(path.basename(argv.out)))
     .pipe(gulp.dest(path.dirname(argv.out)));
 });
+
+gulp.task('es', function () {
+  gulp.src(argv.in)
+    .pipe($.concat('tmp.js', {newLine:';'}))
+    .pipe($.babel({
+      presets: ['latest']
+    }))
+    .pipe(
+      uglify({
+        output: {
+          ascii_only: true,
+          comments: function (node, comment) {
+            return comment.type === 'comment2' && (comment.value + "").substr(0, 1) === '!';
+          },
+        },
+        compress: {
+          unsafe: true,
+        },
+      })
+    )
+    .pipe($.rename(path.basename(argv.out)))
+    .pipe(gulp.dest(path.dirname(argv.out)));
+});
