@@ -185,7 +185,7 @@ resources/.compiled/stat.ink/battles-simple.css: resources/stat.ink/battles-simp
 	$(GULP) less --in $< --out $@
 
 resources/.compiled/stat.ink/active-reltime.js: resources/stat.ink/active-reltime.js $(GULP)
-	$(GULP) js --in $< --out $@
+	$(GULP) es --in $< --out $@
 
 resources/.compiled/stat.ink/battle-edit.js: resources/stat.ink/battle-edit.js $(GULP)
 	$(GULP) js --in $< --out $@
