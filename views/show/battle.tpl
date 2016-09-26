@@ -643,26 +643,21 @@
         {{/if}}
         {{$hasExtendedData = false}}
         {{if $battle->myTeamPlayers && $battle->hisTeamPlayers}}
-          {{if $battle->my_team_color_rgb && $battle->his_team_color_rgb}}
-            {{registerCss}}
-              #players .bg-my {
-                background: #{{$battle->my_team_color_rgb|escape}};
-                color: #fff;
-                text-shadow: 1px 1px 0 rgba(0,0,0,.8);
-              }
-
-              #players .bg-his {
-                background: #{{$battle->his_team_color_rgb|escape}};
-                color: #fff;
-                text-shadow: 1px 1px 0 rgba(0,0,0,.8);
-              }
-            {{/registerCss}}
-          {{/if}}
-          {{registerCss}}
-            #players .its-me {
-              background: #ffffcc;
-            }
-          {{/registerCss}}
+          {{use class="app\assets\BattleShowPlayersTableAsset"}}
+          {{BattleShowPlayersTableAsset::register($this)|@void}}
+          {{registerJs}}
+            {{if $battle->my_team_color_rgb && $battle->his_team_color_rgb}}
+              decoratePlayersTable(
+                "#{{$battle->my_team_color_rgb|escape:javascript}}",
+                "#{{$battle->his_team_color_rgb|escape:javascript}}"
+              );
+            {{else}}
+              decoratePlayersTable(
+                colorScheme.graph1,
+                colorScheme.graph2
+              );
+            {{/if}}
+          {{/registerJs}}
           {{$hideRank = true}}
           {{$hidePoint = true}}
           {{if !$battle->rule || $battle->rule->key !== 'nawabari'}}

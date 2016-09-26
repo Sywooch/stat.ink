@@ -27,6 +27,7 @@ RESOURCE_TARGETS_MAIN=\
 	resources/.compiled/stat.ink/battle-edit.js \
 	resources/.compiled/stat.ink/battle-input.css \
 	resources/.compiled/stat.ink/battle-input.js \
+	resources/.compiled/stat.ink/battle-show--players-table.js \
 	resources/.compiled/stat.ink/battle-show--private.css \
 	resources/.compiled/stat.ink/battle-show--private.js \
 	resources/.compiled/stat.ink/battles-simple.css \
@@ -197,6 +198,9 @@ resources/.compiled/stat.ink/battle-input.js: resources/stat.ink/battle-input.js
 
 resources/.compiled/stat.ink/battle-input.css: resources/stat.ink/battle-input.less $(GULP)
 	$(GULP) less --in $< --out $@
+
+resources/.compiled/stat.ink/battle-show--players-table.js: resources/stat.ink/battle-show--players-table.js $(GULP)
+	$(GULP) es --in $< --out $@
 
 resources/.compiled/stat.ink/battle-show--private.js: resources/stat.ink/battle-show--private.js $(GULP)
 	$(GULP) es --in $< --out $@
