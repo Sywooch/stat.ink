@@ -609,32 +609,12 @@
                 <tr>
                   <th>{{'Note (private)'|translate:'app'|escape}}</th>
                   <td>
+                    {{use class="app\assets\BattleShowPrivateAsset"}}
+                    {{BattleShowPrivateAsset::register($this)|@void}}
                     <button class="btn btn-default" id="private-note-show">
                       <span class="fa fa-lock fa-fw"></span>
                     </button>
                     <div id="private-note">{{$battle->private_note|escape|nl2br}}</div>
-                    {{registerCss}}
-                      #private-note{display:none}
-                    {{/registerCss}}
-                    {{registerJs}}
-                      (function($){
-                        "use strict";
-                        var $btn = $('#private-note-show');
-                        var $txt = $('#private-note');
-                        var $i = $('.fa', $btn);
-                        $btn.hover(
-                          function() {
-                            $i.removeClass('fa-lock').addClass('fa-unlock-alt');
-                          },
-                          function() {
-                            $i.removeClass('fa-unlock-alt').addClass('fa-lock');
-                          }
-                        ).click(function () {
-                          $btn.hide();
-                          $txt.show();
-                        });
-                      })(jQuery);
-                    {{/registerJs}}
                   </td>
                 </tr>
               {{/if}}
