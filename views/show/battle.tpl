@@ -868,27 +868,7 @@
                   {{/if}}
                 </label>
               </p>
-              {{registerJs}}
-                (function($){
-                  "use strict";
-                  var events=window.battleEvents.filter(function(v){
-                    return v.type==="objective"||v.type==="splatzone"
-                  });
-                  if(events.length>0){
-                    $('#enable-smoothing')
-                      .prop('disabled', false)
-                      .change(function(){
-                        $('#timeline').attr(
-                          'data-object-smoothing',
-                          $(this).prop('checked')?"enable":"disable"
-                        );
-                        $(window).resize(); {{* redraw *}}
-                      })
-                      .prop('checked',{{if $battle->rule->key === 'area'}}true{{else}}false{{/if}})
-                      .change();
-                  };
-                })(jQuery);
-              {{/registerJs}}
+              {{\app\assets\BattleShowGraphAsset::register($this)|@void}}{{* TODO: グラフ部分へ *}}
             {{/if}}
             {{\jp3cki\yii2\flot\FlotAsset::register($this)|@void}}
             {{\app\assets\FlotIconAsset::register($this)|@void}}

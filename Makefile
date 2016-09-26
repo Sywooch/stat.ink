@@ -27,6 +27,7 @@ RESOURCE_TARGETS_MAIN=\
 	resources/.compiled/stat.ink/battle-edit.js \
 	resources/.compiled/stat.ink/battle-input.css \
 	resources/.compiled/stat.ink/battle-input.js \
+	resources/.compiled/stat.ink/battle-show--graph-noise-reduction.js \
 	resources/.compiled/stat.ink/battle-show--players-table.js \
 	resources/.compiled/stat.ink/battle-show--private.css \
 	resources/.compiled/stat.ink/battle-show--private.js \
@@ -207,6 +208,9 @@ resources/.compiled/stat.ink/battle-show--private.js: resources/stat.ink/battle-
 
 resources/.compiled/stat.ink/battle-show--private.css: resources/stat.ink/battle-show--private.less $(GULP)
 	$(GULP) less --in $< --out $@
+
+resources/.compiled/stat.ink/battle-show--graph-noise-reduction.js: resources/stat.ink/battle-show--graph-noise-reduction.js $(GULP)
+	$(GULP) es --in $< --out $@
 
 resources/.compiled/stat.ink/downloads.css: resources/stat.ink/downloads.less $(GULP)
 	$(GULP) less --in $< --out $@
