@@ -1,0 +1,12 @@
+{
+  "name": "statink-streamer",
+  "license": "MIT",
+  "author": {
+    "name": "AIZAWA Hina",
+    "email": "hina@bouhime.com"
+  },
+  "dependencies": {
+    "knex": "^0.12.1",
+    "pg": "^6.1.0"
+  }
+}
