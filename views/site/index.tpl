@@ -354,4 +354,6 @@
         ->all()}}
     {{include file="@app/views/includes/battle_thumb_list.tpl" battles=$battles}}
   </div>
+
+  {{\app\assets\MapDataJsonAsset::register($this)|@void}}
 {{/strip}}

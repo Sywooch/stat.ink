@@ -1,9 +1,26 @@
 /*! Copyright (C) 2016 AIZAWA Hina | MIT License */
 
 const db = require('./app/db');
+const config_ = require('./app/config');
 const message_ = require('./app/message');
 
+let appConfig;
+let dbConn;
 
+Promise.all([
+    config_.load(),
+    db.getConnection(),
+  ])
+  .then(_ => {
+    appConfig = _[0];
+    dbConn = _[1];
+  })
+  .then(() => {
+    console.log(appConfig);
+  });
+
+
+/*
 db.getConnection()
   .then(dbConn => new Promise(exit_ => {
     let intervalTimer;
@@ -34,6 +51,7 @@ db.getConnection()
         .then((msg) => { console.log(msg); });
     }, 1000);
   }));
+*/
 
   // .then(conn => message_.getCounts(conn))
   // .then(msg => {console.log(msg)})
